@@ -68,7 +68,8 @@ public class Persona {
         return this.name + " " + this.surname;
     }
 
-    public void printInfo(){
-        System.out.println(this.name +" "+ this.surname +" "+ this.DNI +" "+ this.age +" "+ this.ProvidenceCity +" "+ this.Profession);
+    @Override
+    public String toString(){
+        return "Persona: con nombre" + this.name + " y apellido " + this.surname + " y dni: " + this.DNI + " con una edad de " + this.age + " de la provincia de " + this.ProvidenceCity + " y de profesion: " + this.Profession;
     }
 }

@@ -41,4 +41,9 @@ public class TV {
             System.out.println("Volumen: " + this.volume);
         }
     }
+
+    @Override
+    public String toString(){
+        return "TV: con el canal " + this.channel + " y volumen " + this.volume;
+    }
 }

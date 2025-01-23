@@ -5,6 +5,11 @@ import java.util.Random;
 public class Pacient {
 
     private final static char GENDER_DEFF = 'X';
+    public final static int OVERWEIGHT = 1;
+    public final static int UNDERWEIGHT = -1;
+    public final static int IDEALWEIGHT = 0;
+    private final static int OVERAGE = 18;
+
 
     private String name;
     private int age;
@@ -19,10 +24,54 @@ public class Pacient {
     public Pacient(String name, int age, char gender, double weight, double height){
         this.name = name;
         this.age = age;
-        this.gender = gender;
+        CheckGender(gender);
         this.weight = weight;
         this.height = height;
         GenerateDNI();
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getDNI() {
+        return this.DNI;
+    }
+
+    public char getGender() {
+        return this.gender;
+    }
+
+    public void setGender(char gender) {
+        CheckGender(this.gender);
+    }
+
+    public double getWeight() {
+        return this.weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getHeight() {
+        return this.height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
     }
 
     public Pacient(String name, int age, char gender){
@@ -49,5 +98,33 @@ public class Pacient {
         System.out.println("Altura: " + this.height);
     }
 
+    public int CalcIMC(){
+        double IMC = this.weight / (Math.pow(this.height, 2));
+        if (IMC < 20){
+            return UNDERWEIGHT;
+        }else if(IMC > 25){
+            return OVERWEIGHT;
+        }else {
+            return IDEALWEIGHT;
+        }
+    }
 
+    public boolean CheckAge(){
+        return this.age >= OVERAGE;
+    }
+
+    private void CheckGender(char sex){
+        if (sex != 'X' && sex != 'M'){
+            this.gender = GENDER_DEFF;
+        }else {
+            this.gender = sex;
+        }
+    }
+
+    @Override
+    public String toString(){
+
+        return "Paciente: con nombre" + this.name + " y " + this.age +" años de edad. Género "+ this.gender + " y dni: " + this.DNI + " con una altura de " + this.height + " y un peso de " + this.weight;
+
+    }
 }
