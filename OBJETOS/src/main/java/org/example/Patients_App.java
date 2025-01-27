@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Scanner;
 
-public class Main {
+public class Patients_App {
     public static void main(String[] args) {
         Scanner entry = new Scanner(System.in);
 //        Persona persona1 = new Persona("Nacho","Gamallo","48670809A",90,21,"Alicante","Soporte Técnico");
@@ -22,9 +22,9 @@ public class Main {
         double weight = entry.nextDouble();
         System.out.println("Introduce altura:");
         double height = entry.nextDouble();
-        Pacient paciente1 = new Pacient();
-        Pacient paciente2 = new Pacient(name,age,gender);
-        Pacient paciente3 = new Pacient(name,age,gender,weight,height);
+        Patient paciente1 = new Patient();
+        Patient paciente2 = new Patient(name,age,gender);
+        Patient paciente3 = new Patient(name,age,gender,weight,height);
         paciente1.setName("Paco");
         paciente1.setAge(25);
         paciente1.setGender('M');
@@ -36,23 +36,23 @@ public class Main {
         CheckWeight(paciente3);
     }
 
-    public static void CheckWeight(Pacient pacient){
+    public static void CheckWeight(Patient pacient){
         int imc = pacient.CalcIMC();
 
         switch (imc){
-            case Pacient.UNDERWEIGHT:
+            case Patient.UNDERWEIGHT:
                 System.out.println("La persona "+ pacient.getName()+ " tiene menos del peso ideal");
                 break;
-            case Pacient.OVERWEIGHT:
+            case Patient.OVERWEIGHT:
                 System.out.println("La persona "+ pacient.getName()+ "tiene mas del peso ideal");
                 break;
-            case Pacient.IDEALWEIGHT:
+            case Patient.IDEALWEIGHT:
                 System.out.println("La persona "+ pacient.getName()+ "tiene el peso ideal");
                 break;
         }
     }
 
-    public static void CheckAge(Pacient pacient){
+    public static void CheckAge(Patient pacient){
         if(pacient.CheckAge()){
             System.out.println("El paciente es mayor de edad.");
         }else {

@@ -46,7 +46,11 @@ public class Estudiante {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        if (CheckEmail(email)){
+            this.email = email;
+        }else {
+            this.email = "";
+        }
     }
 
     private int GenerateNIA(){
@@ -57,7 +61,7 @@ public class Estudiante {
         return StudentCount;
     }
 
-    private boolean CheckEmail(){
+    private boolean CheckEmail(String email){
         return this.email.matches(MAIL_FORMAT);
     }
 
@@ -65,5 +69,4 @@ public class Estudiante {
     public String toString(){
         return "Estudiante con NIA: " + this.nia + " con nombre "+ this.name + " en el curso " + this.curs + " con el email: " + this.email;
     }
-
 }

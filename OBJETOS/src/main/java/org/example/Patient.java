@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Random;
 
-public class Pacient {
+public class Patient {
 
     private final static char GENDER_DEFF = 'X';
     public final static int OVERWEIGHT = 1;
@@ -18,10 +18,10 @@ public class Pacient {
     private double weight;
     private double height;
 
-    public Pacient(){
+    public Patient(){
         this(null,0,GENDER_DEFF,0,0);
     }
-    public Pacient(String name, int age, char gender, double weight, double height){
+    public Patient(String name, int age, char gender, double weight, double height){
         this.name = name;
         this.age = age;
         CheckGender(gender);
@@ -74,7 +74,7 @@ public class Pacient {
         this.height = height;
     }
 
-    public Pacient(String name, int age, char gender){
+    public Patient(String name, int age, char gender){
         this(name,age,gender,0,0);
     }
 
