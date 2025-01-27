@@ -8,14 +8,18 @@ public class Libro {
     private String title;
     private String author;
     private String id;
+    private Estudiante loan_student;
+    private Editorial editorial;
 
     public Libro(){}
-    public Libro(String title, String author){
+    public Libro(String title, String author, Editorial editorial){
         ++count_books;
         ++available_books;
         this.author = author;
         this.title = title;
+        loan_student = null;
         this.id = calc_id();
+        this.editorial  = editorial;
     }
 
     public static String getCount_books() {
@@ -50,6 +54,10 @@ public class Libro {
         return this.id;
     }
 
+    public Estudiante getLoan_student() {return loan_student;}
+
+    public void setLoan_student(Estudiante loan_student) {this.loan_student = loan_student;}
+
     private String calc_id(){
         if (count_books < 10){
             return "LIB00" + count_books;
@@ -60,21 +68,27 @@ public class Libro {
         }
     }
 
-    public void lend_book() {
-        if (available){
+    public void lend_book(Estudiante student) {
+        if (available && student.getBorrowed_book() == null){
             available = false;
+            System.out.println("El libro" + this.title + "ha sido prestado a " + student.getName());
             available_books--;
-            System.out.println("El libro" + this.title + "ha sido prestado con exito");
-        }else {
+            loan_student = student;
+            student.setBorrowed_book(this);
+        } else if (student.getBorrowed_book() != null) {
+            System.out.println("El estudiante " + student.getName() + " ya tiene un libro prestado");
+        } else {
             System.out.println("El libro" + this.title + "ya esta prestado...");
         }
     }
 
-    public void return_book(){
+    public void return_book(Estudiante student){
         if (!available){
             available = true;
             available_books++;
-            System.out.println("El libro" + this.title + "ha sido devuelto con exito");
+            System.out.println("El libro" + this.title + "ha sido devuelto por" + loan_student.getName());
+            loan_student = null;
+            student.setBorrowed_book(null);
         }else {
             System.out.println("El libro" + this.title + "ya esta devuelto...");
         }

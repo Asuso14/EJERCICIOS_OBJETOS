@@ -8,6 +8,7 @@ public class Estudiante {
     private String curs;
     private int nia;
     private String email;
+    private Libro borrowed_book;
 
     public Estudiante(String name){
         this.name = name;
@@ -44,6 +45,10 @@ public class Estudiante {
     public String getEmail() {
         return email;
     }
+
+    public Libro getBorrowed_book() {return borrowed_book;}
+
+    public void setBorrowed_book(Libro borrowed_book) {this.borrowed_book = borrowed_book;}
 
     public void setEmail(String email) {
         if (CheckEmail(email)){
