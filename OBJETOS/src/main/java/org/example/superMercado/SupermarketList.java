@@ -1,4 +1,4 @@
-package org.example;
+package org.example.superMercado;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -98,10 +98,6 @@ public class SupermarketList{
         this.marketList.clear();
     }
 
-    public void cloneList(){
-       Object temp = this.marketList.clone();
-       return temp;
-    }
 
     public static void main (String[] args) throws CloneNotSupportedException {
 

@@ -1,4 +1,6 @@
-package org.example;
+package org.example.biblioteca;
+
+import java.util.ArrayList;
 
 public class Estudiante {
 
@@ -8,11 +10,12 @@ public class Estudiante {
     private String curs;
     private int nia;
     private String email;
-    private Libro borrowed_book;
+    private ArrayList <Libro> borrowed_books;
 
     public Estudiante(String name){
         this.name = name;
         this.nia = GenerateNIA();
+        borrowed_books = new ArrayList<>();
     }
 
     public Estudiante(String name, String curs, String email){
@@ -20,6 +23,7 @@ public class Estudiante {
         this.curs = curs;
         this.email = email;
         this.nia = GenerateNIA();
+        borrowed_books = new ArrayList<>();
     }
 
     public String getName() {
@@ -46,9 +50,19 @@ public class Estudiante {
         return email;
     }
 
-    public Libro getBorrowed_book() {return borrowed_book;}
+    public ArrayList<Libro> getBorrowed_books() {return borrowed_books;}
 
-    public void setBorrowed_book(Libro borrowed_book) {this.borrowed_book = borrowed_book;}
+    public void setBorrowed_books(ArrayList<Libro> borrowed_books) {
+        this.borrowed_books = borrowed_books;
+    }
+
+    public void addBook (Libro book){
+        borrowed_books.add(book);
+    }
+
+    public void deleteBook (Libro book){
+        borrowed_books.remove(book);
+    }
 
     public void setEmail(String email) {
         if (CheckEmail(email)){
@@ -72,6 +86,10 @@ public class Estudiante {
 
     @Override
     public String toString(){
-        return "Estudiante con NIA: " + this.nia + " con nombre "+ this.name + " en el curso " + this.curs + " con el email: " + this.email;
+        if (!borrowed_books.isEmpty()){
+            return "Estudiante: [ NIA=" + this.nia + ", nombre="+ this.name + ", curso=" + this.curs + ", email=" + this.email + ", LibrosPrestados=" + borrowed_books + "]";
+        }else {
+            return "Estudiante: [ NIA=" + this.nia + ", nombre="+ this.name + ", curso=" + this.curs + ", email=" + this.email + "]";
+        }
     }
 }

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.TV;
 
 public class TV {
     private int channel = 1;

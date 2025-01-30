@@ -1,4 +1,4 @@
-package org.example;
+package org.example.TV;
 
 public class AplicacionTV {
     public static void main(String[] TVApp){

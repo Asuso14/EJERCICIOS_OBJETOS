@@ -1,4 +1,4 @@
-package org.example;
+package org.example.biblioteca;
 
 public class Libro {
 
@@ -20,6 +20,7 @@ public class Libro {
         loan_student = null;
         this.id = calc_id();
         this.editorial  = editorial;
+        editorial.addBook(this);
     }
 
     public static String getCount_books() {
@@ -69,14 +70,14 @@ public class Libro {
     }
 
     public Prestamo lend_book(Estudiante student) {
-        if (available && student.getBorrowed_book() == null){
+        if (available && student.getBorrowed_books().contains(this)){
             available = false;
             System.out.println("El libro" + this.title + "ha sido prestado a " + student.getName());
             available_books--;
             loan_student = student;
-            student.setBorrowed_book(this);
+            student.addBook(this);
             return new Prestamo(student,this);
-        } else if (student.getBorrowed_book() != null) {
+        } else if (student.getBorrowed_books().contains(this)) {
             System.out.println("El estudiante " + student.getName() + " ya tiene un libro prestado");
         } else {
             System.out.println("El libro" + this.title + "ya esta prestado...");
@@ -93,8 +94,7 @@ public class Libro {
             available = true;
             available_books++;
             System.out.println("El libro" + this.title + "ha sido devuelto por" + loan_student.getName());
-            loan_student = null;
-            student.setBorrowed_book(null);
+            student.deleteBook(this);
         }else {
             System.out.println("El libro" + this.title + "ya esta devuelto...");
         }
@@ -102,6 +102,6 @@ public class Libro {
 
     @Override
     public String toString(){
-        return "El libro " + this.title + " del autor " + this.author + " con el id " + this.id + " con el estado: "+ this.available + " de prestamo.";
+        return "Libro: [ titulo=" + this.title + "autor=" + this.author + "id=" + this.id + "Editorial=" + this.editorial + "status=" + this.available + "]";
     }
 }
