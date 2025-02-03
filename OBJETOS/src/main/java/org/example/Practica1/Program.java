@@ -1,18 +1,29 @@
 package org.example.Practica1;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Program {
 
+    static Scanner entry = new Scanner(System.in);
+
     private String name;
     private Channel channel;
-    private int seasons;
+    private int seasons = 0;
     private ArrayList<Employee> employeesList;
     private ArrayList<Guest> guestsList;
     private Employee director;
 
     public Program(){}
-    public Program(String name){
+    public Program(String name, Channel channel, int seasons, Employee director){
+
+        this.name = name;
+        this.channel = channel;
+        this.seasons = seasons;
+        employeesList = new ArrayList<Employee>();
+        this.director = director;
+        employeesList.add(this.director);
+        guestsList = new ArrayList<Guest>();
 
     }
 

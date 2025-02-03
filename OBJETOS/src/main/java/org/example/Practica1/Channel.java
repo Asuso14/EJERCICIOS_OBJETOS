@@ -31,10 +31,9 @@ public class Channel {
 
     @Override
     public String toString() {
-        return "Channel{" +
+        return "Channel: [" +
                 "name='" + name + '\'' +
                 ", programList=" + programList +
-                '}';
+                ']';
     }
-
 }
