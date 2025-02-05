@@ -11,6 +11,9 @@ public class Employee {
     private Employee director;
 
     public Employee(){};
+    public Employee(String name, String charge){
+
+    }
     public Employee(String name, String charge, Employee director){
         this.name = name;
         this.id = generateID();

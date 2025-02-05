@@ -1,11 +1,93 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+package org.example.biblioteca {
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+    class Editorial {
+        - String name
+        - String country
+        - ArrayList<Libro> booksList
+        + Editorial()
+        + Editorial(String name, String country)
+        + void addBook(Libro book)
+        + void deleteBook(Libro book)
+        + ArrayList<Libro> getBooksList()
+        + void setBooksList(ArrayList<Libro> booksList)
+        + String getName()
+        + void setName(String name)
+        + String getCountry()
+        + void setCountry(String country)
+        + String toString()
+    }
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+    class Estudiante {
+        - final static String MAIL_FORMAT
+        + static int StudentCount
+        - String name
+        - String curs
+        - int nia
+        - String email
+        - ArrayList<Libro> borrowed_books
+        + Estudiante(String name)
+        + Estudiante(String name, String curs, String email)
+        + String getName()
+        + void setName(String name)
+        + String getCurs()
+        + void setCurs(String curs)
+        + int getNia()
+        + String getEmail()
+        + void setEmail(String email)
+        + void addBook(Libro book)
+        + void deleteBook(Libro book)
+        + static int TotalStudents()
+        - boolean CheckEmail(String email)
+        + String toString()
+    }
+
+    class Libro {
+        + static int count_books
+        + static int available_books
+        - boolean available
+        - String title
+        - String author
+        - String id
+        - Estudiante loan_student
+        - Editorial editorial
+        + Libro()
+        + Libro(String title, String author, Editorial editorial)
+        + static String getCount_books()
+        + static String getAvailable_books()
+        + boolean isAvailable()
+        + String getTitle()
+        + void setTitle(String title)
+        + String getAuthor()
+        + void setAuthor(String author)
+        + String getId()
+        + void setLoan_student(Estudiante loan_student)
+        + Prestamo lend_book(Estudiante student)
+        + Prestamo getLoan(Prestamo loan)
+        + void return_book(Estudiante student)
+        + String toString()
+    }
+
+    class Prestamo {
+        - Estudiante student
+        - Libro book
+        - LocalDate date
+        + Prestamo(Estudiante student, Libro book)
+        + Estudiante getStudent()
+        + void setStudent(Estudiante student)
+        + Libro getBook()
+        + void setBook(Libro book)
+        + LocalDate getDate()
+        + void setDate(LocalDate date)
+    }
+
+    Editorial "1" o-- "*" Libro : publica
+    Estudiante "1" o-- "*" Libro : toma prestado
+    Libro "1" -- "1" Editorial : pertenece a
+    Prestamo "1" -- "1" Estudiante : involucra
+    Prestamo "1" -- "1" Libro : presta
+
+}
+
 @enduml
