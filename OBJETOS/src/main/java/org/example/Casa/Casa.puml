@@ -1,0 +1,59 @@
+@startuml
+
+class Casa {
+    - String direccion
+    - ArrayList<Habitacion> habitaciones
+    - Propietario owner
+    + Casa()
+    + Casa(String direccion)
+    + void agregarHabitacion(String nombre, double m2)
+    + void setOwner()
+    + void mostrarHabitaciones()
+    + Habitacion getBiggerRom()
+    + void deleteRoom(String name)
+    + String getDireccion()
+    + void setDireccion(String direccion)
+    + ArrayList<Habitacion> getHabitaciones()
+    + void setHabitaciones(ArrayList<Habitacion> habitaciones)
+    + Propietario getOwner()
+    + void setOwner(Propietario owner)
+}
+
+class Habitacion {
+    - String nombre
+    - double m2
+    - ArrayList<Electrodomestico> appliance
+    + Habitacion(String nombre, double m2)
+    + void addAppliance(String name, double kWh)
+    + String getNombre()
+    + void setNombre(String nombre)
+    + double getM2()
+    + void setM2(double m2)
+}
+
+class Electrodomestico {
+    - String name
+    - double kWhConsume
+    + Electrodomestico()
+    + Electrodomestico(String name, double kWhConsume)
+    + String getName()
+    + void setName(String name)
+    + double getkWhConsume()
+    + void setkWhConsume(double kWhConsume)
+}
+
+class Propietario {
+    - String nombre
+    - int edad
+    + Propietario(String nombre, int edad)
+    + String getNombre()
+    + void setNombre(String nombre)
+    + int getEdad()
+    + void setEdad(int edad)
+}
+
+Casa "1" -- "*" Habitacion
+Habitacion "*" -- "*" Electrodomestico
+Casa "1" -- "1" Propietario
+
+@enduml
