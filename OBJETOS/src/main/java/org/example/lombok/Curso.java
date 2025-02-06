@@ -12,5 +12,4 @@ public class Curso {
     private String name;
     private int hours;
 
-
 }

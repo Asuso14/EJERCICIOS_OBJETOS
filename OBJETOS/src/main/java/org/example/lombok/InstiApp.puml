@@ -1,0 +1,57 @@
+@startuml
+
+class Curso {
+    - String name
+    - int hours
+    + Curso(String name)
+    + Curso(String name, int hours)
+    + getName(): String
+    + setName(String name)
+    + getHours(): int
+    + setHours(int hours)
+    + toString(): String
+}
+
+class Estudiante {
+    - String name
+    - int age
+    - Curso curs
+    + Estudiante(String name)
+    + Estudiante(String name, int age, Curso curs)
+    + getName(): String
+    + setName(String name)
+    + getAge(): int
+    + setAge(int age)
+    + getCurs(): Curso
+    + setCurs(Curso curs)
+    + toString(): String
+}
+
+class Instituto {
+    - String name
+    - String population
+    - String address
+    - ArrayList<Curso> cursList
+    - ArrayList<Estudiante> studentList
+    + Instituto(String name)
+    + Instituto(String name, String population, String address, ArrayList<Curso> cursList, ArrayList<Estudiante> studentList)
+    + getName(): String
+    + getPopulation(): String
+    + setPopulation(String population)
+    + getAddress(): String
+    + setAddress(String address)
+    + getCursList(): ArrayList<Curso>
+    + setCursList(ArrayList<Curso> cursList)
+    + getStudentList(): ArrayList<Estudiante>
+    + setStudentList(ArrayList<Estudiante> studentList)
+    + addCurs(Curso curs)
+    + addStudent(Estudiante student)
+    - checkCurs(String name, int hours): boolean
+    + toString(): String
+}
+
+Curso "1" *-- "*" Estudiante : curs
+Instituto "1" *-- "*" Curso : cursList
+Instituto "1" *-- "*" Estudiante : studentList
+
+@enduml

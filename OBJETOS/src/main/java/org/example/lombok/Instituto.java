@@ -29,15 +29,13 @@ public class Instituto {
 
     }
 
-    @NonNull
     public void addCurs(Curso curs){
 
-        if (curs != null ||  checkCurs(curs.getName(),curs.getHours())){
+        if (curs != null && checkCurs(curs)){
             cursList.add(curs);
         }else {
             System.out.println("Formato incorrecto, ya existe el curso o es nulo...");
         }
-
     }
 
     public void addStudent(Estudiante student){
@@ -50,16 +48,14 @@ public class Instituto {
 
     }
 
-    private boolean checkCurs(String name, int hours){
+    private boolean checkCurs(Curso curs){
 
-        boolean status = true;
         for (Curso cur : cursList){
-            if (name.equalsIgnoreCase(cur.getName()) && hours == cur.getHours()) {
-                status = false;
-                break;
+            if (curs.getName().trim().equalsIgnoreCase(cur.getName().trim()) &&
+                    curs.getHours() == cur.getHours()) {
+                return false;
             }
         }
-        return status;
-
+        return true;
     }
 }
