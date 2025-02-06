@@ -1,5 +1,7 @@
 package org.example.Practica1;
 
+import org.example.Casa.Habitacion;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,14 +17,12 @@ public class Program {
     private Employee director;
 
     public Program(){}
-    public Program(String name, Channel channel, int seasons, Employee director){
+    public Program(String name, Channel channel, int seasons){
 
         this.name = name;
         this.channel = channel;
         this.seasons = seasons;
         employeesList = new ArrayList<Employee>();
-        this.director = director;
-        employeesList.add(this.director);
         guestsList = new ArrayList<Guest>();
 
     }
@@ -73,6 +73,15 @@ public class Program {
 
     public void setDirector(Employee director) {
         this.director = director;
+    }
+
+    public void addDirector(String name) {
+        Employee employee = new Employee(name);
+        employeesList.add(employee);
+    }
+
+    public void addEmployee(){
+
     }
 
     @Override
