@@ -11,14 +11,17 @@ public class Employee {
     private Employee director;
 
     public Employee(){};
-    public Employee(String name, String charge){
+    public Employee(String name){
+        this.name = name;
+        this.id = generateID();
 
     }
     public Employee(String name, String charge, Employee director){
         this.name = name;
         this.id = generateID();
         generateCharge(charge);
-        generateDirector(director);
+        setDirector(director);
+
     }
 
     public int getEmployeeNum() {
@@ -58,10 +61,15 @@ public class Employee {
     }
 
     public void setDirector(Employee director) {
-        this.director = director;
+        if (isDirector(this.charge)){
+            this.director = null;
+        }else {
+            this.director = director;
+        }
     }
 
     private String generateID(){
+        ++employeeNum;
         if(employeeNum < 10){
             return "EP00" + employeeNum;
         } else if (employeeNum < 100) {
@@ -84,12 +92,8 @@ public class Employee {
         }
     }
 
-    private void generateDirector(Employee director){
-        if (this.charge.equalsIgnoreCase(CHARGE_VALUES[0])){
-            this.director = null;
-        }else {
-            this.director = director;
-        }
+    private boolean isDirector(String charge){
+        return charge.equalsIgnoreCase(CHARGE_VALUES[0]);
     }
 
     @Override

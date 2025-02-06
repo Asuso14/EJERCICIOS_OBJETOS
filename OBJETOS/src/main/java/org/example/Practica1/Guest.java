@@ -11,6 +11,12 @@ public class Guest {
     private int season;
 
     public Guest(){}
+    public Guest(String name, String job, int season){
+        this.name = name;
+        this.job = job;
+        this.season = season;
+        this.visitDate = DEFAULT_DATA;
+    }
     public Guest(String name, String job, LocalDate date, int season){
 
         this.name = name;
