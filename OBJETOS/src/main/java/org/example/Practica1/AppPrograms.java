@@ -9,5 +9,4 @@ public class AppPrograms {
         Program ElFormiguero = new Program("ElFormiguero",LaUno,15);
         Program LaRebelion = new Program("LaRebelion",MediaSer,8);
     }
-
 }

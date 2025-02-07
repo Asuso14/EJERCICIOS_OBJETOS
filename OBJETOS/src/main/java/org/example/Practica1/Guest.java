@@ -1,7 +1,13 @@
 package org.example.Practica1;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.time.LocalDate;
 
+@Getter @Setter
+@ToString
 public class Guest {
 
     private final LocalDate DEFAULT_DATA = LocalDate.now();
@@ -25,49 +31,7 @@ public class Guest {
         checkDate(date);
 
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
-    }
-
-    public LocalDate getVisitDate() {
-        return visitDate;
-    }
-
-    public void setVisitDate(LocalDate visitDate) {
-        this.visitDate = visitDate;
-    }
-
-    public int getSeason() {
-        return season;
-    }
-
-    public void setSeason(int season) {
-        this.season = season;
-    }
     private void checkDate(LocalDate date){
         this.visitDate = date == null ? DEFAULT_DATA : date;
-    }
-
-    @Override
-    public String toString() {
-        return "Guest{" +
-                "name='" + name + '\'' +
-                ", job='" + job + '\'' +
-                ", visitDate=" + visitDate +
-                ", season=" + season +
-                '}';
     }
 }

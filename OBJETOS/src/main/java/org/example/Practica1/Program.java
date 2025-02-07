@@ -1,10 +1,15 @@
 package org.example.Practica1;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.example.Casa.Habitacion;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+@Setter @Getter
+@ToString
 public class Program {
 
     static Scanner entry = new Scanner(System.in);
@@ -27,54 +32,6 @@ public class Program {
 
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Channel getChannel() {
-        return channel;
-    }
-
-    public void setChannel(Channel channel) {
-        this.channel = channel;
-    }
-
-    public int getSeasons() {
-        return seasons;
-    }
-
-    public void setSeasons(int seasons) {
-        this.seasons = seasons;
-    }
-
-    public ArrayList<Employee> getEmployeesList() {
-        return employeesList;
-    }
-
-    public void setEmployeesList(ArrayList<Employee> employeesList) {
-        this.employeesList = employeesList;
-    }
-
-    public ArrayList<Guest> getGuestsList() {
-        return guestsList;
-    }
-
-    public void setGuestsList(ArrayList<Guest> guestsList) {
-        this.guestsList = guestsList;
-    }
-
-    public Employee getDirector() {
-        return director;
-    }
-
-    public void setDirector(Employee director) {
-        this.director = director;
-    }
-
     public void addDirector(String name) {
         Employee employee = new Employee(name);
         employeesList.add(employee);
@@ -82,11 +39,5 @@ public class Program {
 
     public void addEmployee(){
 
-    }
-
-    @Override
-    public String toString() {
-        return "Program: [" + "name='" + getName() + '\'' + ", channel=" + getChannel() + ", seasons=" + getSeasons() +
-                ", employeesList=" + getEmployeesList() + ", guestsList=" + getGuestsList() + ", director=" + getDirector() + ']';
     }
 }

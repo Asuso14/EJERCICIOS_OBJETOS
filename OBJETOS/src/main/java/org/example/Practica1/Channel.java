@@ -1,7 +1,13 @@
 package org.example.Practica1;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 
+@Getter  @Setter
+@ToString
 public class Channel {
 
     private String name;
@@ -11,29 +17,5 @@ public class Channel {
     public Channel(String name){
         this.name = name;
         this.programList = new ArrayList<>();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public ArrayList<Program> getProgramList() {
-        return programList;
-    }
-
-    public void setProgramList(ArrayList<Program> programList) {
-        this.programList = programList;
-    }
-
-    @Override
-    public String toString() {
-        return "Channel: [" +
-                "name='" + name + '\'' +
-                ", programList=" + programList +
-                ']';
     }
 }

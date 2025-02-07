@@ -1,5 +1,11 @@
 package org.example.Practica1;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter @Setter
+@ToString
 public class Employee {
 
     private final String DEFAULT_CHARGE = "pte";
@@ -21,43 +27,6 @@ public class Employee {
         this.id = generateID();
         generateCharge(charge);
         setDirector(director);
-
-    }
-
-    public int getEmployeeNum() {
-        return employeeNum;
-    }
-
-    public void setEmployeeNum(int employeeNum) {
-        this.employeeNum = employeeNum;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCharge() {
-        return charge;
-    }
-
-    public void setCharge(String charge) {
-        this.charge = charge;
-    }
-
-    public Employee getDirector() {
-        return director;
     }
 
     public void setDirector(Employee director) {
@@ -94,16 +63,5 @@ public class Employee {
 
     private boolean isDirector(String charge){
         return charge.equalsIgnoreCase(CHARGE_VALUES[0]);
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "employeeNum=" + employeeNum +
-                ", id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", charge='" + charge + '\'' +
-                ", director=" + director +
-                '}';
     }
 }
