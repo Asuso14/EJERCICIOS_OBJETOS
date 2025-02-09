@@ -1,53 +1,32 @@
 package org.example.Practica1;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
-@Getter @Setter
-@ToString
 public class Employee {
 
     private final String DEFAULT_CHARGE = "pte";
     private final String [] CHARGE_VALUES = {"director","tecnico","presentador","colaborador"};
-    private int employeeNum;
+    private static int employeeNum;
     private String id;
     private String name;
     private String charge;
     private Employee director;
 
-    public Employee(){};
-    public Employee(String name){
-        this.name = name;
-        this.id = generateID();
+    public Employee(){}
 
-    }
     public Employee(String name, String charge, Employee director){
-        this.name = name;
         this.id = generateID();
+        this.name = name;
         generateCharge(charge);
-        setDirector(director);
+        this.director = isDirector(director);
     }
 
-    public void setDirector(Employee director) {
-        if (isDirector(this.charge)){
-            this.director = null;
-        }else {
-            this.director = director;
-        }
-    }
-
+    //Genera una id, cuando se hace se suma 1 a la anterior id.
     private String generateID(){
         ++employeeNum;
-        if(employeeNum < 10){
-            return "EP00" + employeeNum;
-        } else if (employeeNum < 100) {
-            return "EP0" + employeeNum;
-        }else {
-            return "EP" + employeeNum;
-        }
+        return String.format("EP%03d",employeeNum);
     }
 
+    //Aqui recorre el array con los posibles puestos registrados. Si no coincide con
+    // ninguno pondra el caracter por defecto.
     private void generateCharge(String charge){
         boolean temp = false;
         for (String cha : CHARGE_VALUES){
@@ -61,7 +40,53 @@ public class Employee {
         }
     }
 
-    private boolean isDirector(String charge){
-        return charge.equalsIgnoreCase(CHARGE_VALUES[0]);
+    //Si el cargo es director dejara el director en nulo. Sino pondra el valor que se asigne en el constructor.
+    private Employee isDirector(Employee director){
+        return charge.equalsIgnoreCase(CHARGE_VALUES[0]) ? null : director;
+    }
+
+    public int getEmployeeNum() {
+        return employeeNum;
+    }
+
+    public void setEmployeeNum(int employeeNum) {
+        this.employeeNum = employeeNum;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCharge() {
+        return charge;
+    }
+
+    public void setCharge(String charge) {
+        this.charge = charge;
+    }
+
+    public Employee getDirector() {
+        return director;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee: [ id=" + id +
+                ", name=" + name +
+                ", charge=" + charge +
+                ", director=" + director +
+                "]";
     }
 }
