@@ -1,0 +1,96 @@
+@startuml
+
+class Channel {
+    - String name
+    - ArrayList<Program> programList
+    + Channel()
+    + Channel(String name)
+    + void addProgram(Program program)
+    + void removeProgram(Program program)
+    + String getName()
+    + void setName(String name)
+    + ArrayList<Program> getProgramList()
+    + void setProgramList(ArrayList<Program> programList)
+    + String toString()
+}
+
+class Employee {
+    - final String DEFAULT_CHARGE
+    - final String[] CHARGE_VALUES
+    - static int employeeNum
+    - String id
+    - String name
+    - String charge
+    - Employee director
+    + Employee()
+    + Employee(String name, String charge, Employee director)
+    - String generateID()
+    - void generateCharge(String charge)
+    - Employee isDirector(Employee director)
+    + int getEmployeeNum()
+    + void setEmployeeNum(int employeeNum)
+    + String getId()
+    + void setId(String id)
+    + String getName()
+    + void setName(String name)
+    + String getCharge()
+    + void setCharge(String charge)
+    + Employee getDirector()
+    + String toString()
+}
+
+class Guest {
+    - static Scanner entry
+    - final LocalDate DEFAULT_DATA
+    - String name
+    - String job
+    - LocalDate visitDate
+    - int season
+    + Guest()
+    + Guest(String name, String job, int season)
+    + String getName()
+    + void setName(String name)
+    + String getJob()
+    + void setJob(String job)
+    + LocalDate getVisitDate()
+    + void setVisitDate(LocalDate visitDate)
+    + int getSeason()
+    + void setSeason(int season)
+    + String toString()
+}
+
+class Program {
+    - static Scanner entry
+    - String name
+    - Channel channel
+    - int seasons
+    - ArrayList<Employee> employeesList
+    - ArrayList<Guest> guestsList
+    - Employee director
+    + Program()
+    + Program(String name, Channel channel, String directorName)
+    + void addEmployee(String name, String charge, Employee director)
+    + void addGuest(String name, String job, int season)
+    + void guestSeason(int seasons)
+    + int timesGuest(String name)
+    + void searchGuest(String name, int quantity)
+    + boolean searchGuest(String name)
+    + void guestedAfter(String name)
+    + String getName()
+    + void setName(String name)
+    + Channel getChannel()
+    + void setChannel(Channel channel)
+    + int getSeasons()
+    + void setSeasons(int seasons)
+    + ArrayList<Employee> getEmployeesList()
+    + ArrayList<Guest> getGuestsList()
+    + Employee getDirector()
+    + void setDirector(Employee director)
+    + String toString()
+}
+
+Channel "1" -- "*" Program
+Program "1" -- "*" Employee
+Program "1" -- "*" Guest
+Employee "1" -- "0..1" Employee : director
+@enduml
