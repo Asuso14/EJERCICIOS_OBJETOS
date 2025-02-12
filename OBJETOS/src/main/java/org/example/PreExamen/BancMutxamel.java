@@ -24,11 +24,11 @@ public class Banc{
         String election = entry.next();
 
         switch (election){
-            case :
-                clientMenu();
-                break;
-            case :
-                break;
+            //case :
+                //clientMenu();
+                //break;
+            //case :
+                //break;
             case "X":
                 System.out.println("Saliendo del programa...");
                 return false;
@@ -36,7 +36,7 @@ public class Banc{
                 System.out.println("Has introducido un valor no valido");
                 return false;
         }
-        return true;
+        //return true;
     }
 
     public static void clientMenu(){
