@@ -1,0 +1,27 @@
+@startuml
+
+package "org.example.AppEmployee" {
+
+    class Employee {
+        +doTask(): void
+    }
+
+    class Programmer {
+        +doTask(): void
+    }
+
+    class Designer {
+        +doTask(): void
+    }
+
+    class Manager {
+        +doTask(): void
+    }
+
+    Employee <|-- Programmer
+    Employee <|-- Designer
+    Employee <|-- Manager
+
+}
+
+@enduml

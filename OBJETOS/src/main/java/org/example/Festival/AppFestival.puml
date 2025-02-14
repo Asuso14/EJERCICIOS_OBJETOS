@@ -1,0 +1,41 @@
+@startuml
+
+package "org.example.Festival" {
+
+    class Persona {
+        -nombre: String
+        -edad: int
+        +Persona(String, int)
+        +mostrarInfo(): void
+        +accederEvento(): void
+    }
+
+    class Organizador {
+        -rol: String
+        +Organizador(String, int, String)
+        +mostrarInfo(): void
+        +accederEvento(): void
+    }
+
+    class Asistente {
+        #entrada: String
+        +Asistente(String, int, String)
+        +mostrarInfo(): void
+        +accederEvento(): void
+    }
+
+    class Artista {
+        -generoMusical: String
+        +Artista(String, int, String)
+        +mostrarInfo(): void
+        +accederEvento(): void
+    }
+
+    Persona <|-- Organizador
+    Persona <|-- Asistente
+    Persona <|-- Artista
+
+}
+
+@enduml
+

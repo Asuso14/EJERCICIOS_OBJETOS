@@ -19,5 +19,17 @@ public class AppFestival {
 
         System.out.println("Información del Organizador:");
         or1.mostrarInfo();
+
+        Persona artista = new Artista("Sofía", 25, "Rock Alternativo");
+        Persona asistente = new Asistente("Lucas", 18, "VIP");
+        Persona organizador = new Organizador("Martín", 30, "Producción");
+
+        mostrarAcceso(artista);
+        mostrarAcceso(asistente);
+        mostrarAcceso(organizador);
+    }
+
+    public static void mostrarAcceso(Persona persona){
+        persona.accederEvento();
     }
 }

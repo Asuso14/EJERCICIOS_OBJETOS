@@ -15,4 +15,7 @@ public class Persona {
         System.out.println("Edad: " + edad);
     }
 
+    public void accederEvento(){
+        System.out.println("Accediendo al evento...");
+    }
 }
