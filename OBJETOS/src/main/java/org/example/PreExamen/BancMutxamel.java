@@ -50,7 +50,7 @@ public class Banc{
 
         switch (election){
             case "1" :
-                new Cuenta();
+
                 break;
             case "2":
 
@@ -66,17 +66,14 @@ public class Banc{
         }
     }
 
-    public String setName(){
+    public static String setName(){
         System.out.println("Introduce el nombre:");
         return entry.next();
     }
 
-    public String setSurname(){
+    public static String setSurname(){
         System.out.println("Introduce el nombre:");
         return entry.next();
     }
-
-
-
 }
 }
